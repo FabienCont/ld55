@@ -1,6 +1,6 @@
 extends Node
 
-@onready var intro_level: PackedScene  = preload("res://levels/IntroLevel.tscn")
+@onready var intro_level: PackedScene  = preload("res://levels/IntroLevelViewport.tscn")
 @onready var menu: PackedScene  = preload("res://menus/Home.tscn")
 
 var infos: Dictionary = {

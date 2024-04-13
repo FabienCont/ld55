@@ -1,7 +1,6 @@
 extends Control
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
-var player: Player
 
 @export var buttons: Array[Node]
 
