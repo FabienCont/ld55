@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://2m56gqftd485"]
+
+[ext_resource type="PackedScene" uid="uid://c0qs36ltswte4" path="res://menus/home/home_layout.tscn" id="1_a55ym"]
+[ext_resource type="PackedScene" uid="uid://ddr8rsnjp5sls" path="res://menus/home/home_content.tscn" id="2_isc7u"]
+
+[node name="acceuil2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_vertical_guides_ = []
+
+[node name="Control" parent="." instance=ExtResource("1_a55ym")]
+layout_mode = 1
+
+[node name="Node" parent="Control" instance=ExtResource("2_isc7u")]

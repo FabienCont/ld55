@@ -11,14 +11,28 @@ config_version=5
 [application]
 
 config/name="ld55"
+run/main_scene="res://menus/home.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Signals="*res://scripts/autoload/Signals.gd"
+SceneLoader="*res://scenes/autoload/SceneLoader.tscn"
+SoundManager="*res://scenes/autoload/SoundManager.tscn"
+GlobalManager="*res://scripts/autoload/GlobalManager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "blue",
 "res://components/": "red",
+"res://levels/": "purple",
+"res://menus/": "purple",
 "res://resources/": "green",
 "res://scenes/": "orange",
 "res://scripts/": "teal",
