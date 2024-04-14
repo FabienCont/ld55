@@ -3,51 +3,26 @@
 [ext_resource type="Script" path="res://scripts/entities/PlayerEntity.gd" id="1_xurv7"]
 [ext_resource type="Resource" uid="uid://bt5rwiewc4dni" path="res://data/entities/player_infos.tres" id="2_4lv56"]
 [ext_resource type="PackedScene" uid="uid://ba7h2fb8j5vre" path="res://addons/JamStarterPack/components/2d/physics/HurtboxComponent2D.tscn" id="2_herhy"]
+[ext_resource type="PackedScene" uid="uid://gc5sa07ihaet" path="res://components/2d/physics/VelocityComponentIced2D.tscn" id="3_imnur"]
 [ext_resource type="PackedScene" uid="uid://b26iygcwph1nu" path="res://addons/JamStarterPack/components/HealthComponent.tscn" id="3_j8rvv"]
 [ext_resource type="PackedScene" uid="uid://bfj5yk1srxw22" path="res://addons/JamStarterPack/components/2d/physics/VelocityComponent2D.tscn" id="4_ty84w"]
 [ext_resource type="PackedScene" uid="uid://g8050808tc4h" path="res://assets/sprites/characters/olga.aseprite" id="5_nl470"]
-[ext_resource type="PackedScene" uid="uid://7o5fxvac2hpe" path="res://components/2d/physics/VelocityComponentUnderWater.tscn" id="6_3oium"]
+[ext_resource type="PackedScene" uid="uid://7o5fxvac2hpe" path="res://components/2d/physics/VelocityComponentUnderWater2D.tscn" id="6_3oium"]
 [ext_resource type="PackedScene" uid="uid://co4pyj2idq5kg" path="res://components/controllers/SideScrollerControllerComponent2D.tscn" id="7_34cpf"]
 [ext_resource type="PackedScene" uid="uid://c75ngnjy6400v" path="res://components/2d/physics/UnderwaterInteraction.tscn" id="8_n3bk0"]
 
-[sub_resource type="GDScript" id="GDScript_wfn7s"]
-script/source = "extends CharacterBody2D
-
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-
-
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis(\"ui_left\", \"ui_right\")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
-"
-
 [node name="PlayerEntity" type="CharacterBody2D" node_paths=PackedStringArray("controller_component", "velocity_component", "health_component", "sprite_component")]
+collision_layer = 9
+collision_mask = 9
+platform_floor_layers = 4294967291
 script = ExtResource("1_xurv7")
 controller_component = NodePath("SideScrollerControllerComponent2D")
 player_info = ExtResource("2_4lv56")
 velocity_component = NodePath("VelocityComponent")
 health_component = NodePath("HealthComponent")
 sprite_component = NodePath("SpriteComponent")
+
+[node name="VelocityComponentIced2d" parent="." instance=ExtResource("3_imnur")]
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("2_herhy")]
 
@@ -59,20 +34,13 @@ jump_time_to_peak = 0.4
 jump_time_to_descent = 0.35
 
 [node name="VelocityComponentUnderWater" parent="." instance=ExtResource("6_3oium")]
-rotation_speed = null
-MAX_SPEED = null
 movement_speed = 100.0
 acceleration = 1000.0
-FRICTION = null
-jump_height = 50.0
-jump_time_to_peak = 0.4
-jump_time_to_descent = 0.35
+jump_time_to_peak = 0.35
+jump_time_to_descent = 0.3
 
 [node name="SpriteComponent" parent="." instance=ExtResource("5_nl470")]
 
 [node name="UnderwaterInteraction" parent="." instance=ExtResource("8_n3bk0")]
 
 [node name="SideScrollerControllerComponent2D" parent="." instance=ExtResource("7_34cpf")]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = SubResource("GDScript_wfn7s")

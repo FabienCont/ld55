@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://xkrxyn4di7nm"]
+[gd_scene load_steps=9 format=3 uid="uid://xkrxyn4di7nm"]
 
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_6fnjj"]
+[ext_resource type="Script" path="res://scenes/elements/water.gd" id="2_i1mvw"]
+[ext_resource type="Script" path="res://scenes/elements/WaterArea2D.gd" id="3_4wxjy"]
+[ext_resource type="Script" path="res://scenes/elements/IceStaticBody.gd" id="4_opixf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f44wb"]
 shader = ExtResource("1_6fnjj")
-shader_parameter/tint = Color(0.0352941, 1, 1, 0)
+shader_parameter/tint = Color(0.0627451, 0.266667, 0.329412, 0.32549)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab0p6"]
 
@@ -12,13 +15,13 @@ shader_parameter/tint = Color(0.0352941, 1, 1, 0)
 resource_name = "updateCollideShape"
 script/source = "extends CollisionShape2D
 
+class_name IceStaticCollision2D
 @onready var water = $\"../..\"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shape.set_size(water.size)
 	translate(water.size/2)
-	print(water.get_rect())
 	pass # Replace with function body.
 
 
@@ -27,15 +30,39 @@ func _process(delta):
 	pass
 "
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4i5b0"]
+friction = 0.01
+
 [node name="Water" type="ColorRect" groups=["waters"]]
 material = SubResource("ShaderMaterial_f44wb")
 offset_right = 10.0
 offset_bottom = 10.0
+script = ExtResource("2_i1mvw")
+min_pull_value = -40.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
+gravity_space_override = 2
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 955.0
+linear_damp_space_override = 3
+linear_damp = 10.0
+script = ExtResource("3_4wxjy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ab0p6")
+script = SubResource("GDScript_awq20")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+disable_mode = 1
+collision_layer = 8
+collision_mask = 8
+physics_material_override = SubResource("PhysicsMaterial_4i5b0")
+script = ExtResource("4_opixf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ab0p6")
+disabled = true
 script = SubResource("GDScript_awq20")

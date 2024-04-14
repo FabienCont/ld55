@@ -8,10 +8,8 @@ func can_be_used()-> bool:
 	
 func execute(delta:float)->void:
 	var nodes_in_group = entity.get_tree().get_nodes_in_group("waters")
-	for node in nodes_in_group:
-		translate_node_y(node,12.0*delta)
-		
-func translate_node_y(node, amount: float):
-	var new_position = node.position
-	new_position.y -= amount
-	node.position = new_position
+	for water in nodes_in_group:
+		if water.is_frozen == true && water.has_method("unfroze"):
+			water.unfroze(delta)
+		elif water.has_method("pull"):
+			water.pull(delta)

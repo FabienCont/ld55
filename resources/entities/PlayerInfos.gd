@@ -18,4 +18,3 @@ var playerData:PlayerStatsData = preload("res://data/stats/player_stat_data.tres
 
 func _init()-> void:
 	stats_controller = playerData.export_to_stat_controller()
-	print(stats_controller)

@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform vec4 tint :source_color = vec4(1.0);
+
 void vertex() {
 	// Called for every vertex the material is visible on.
 }

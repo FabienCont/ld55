@@ -17,7 +17,15 @@ func execute(delta:float)->void:
 	var velocity_component = get_velocity_component()
 	if direction == Vector2.ZERO:
 		velocity_component.decelerate_x(delta)
+		velocity_component.decelerate_y(delta)
 	else:
-		velocity_component.accelerate_in_x_direction(direction.x,delta)
+		if direction.x == 0:
+			velocity_component.decelerate_x(delta)
+		else: 
+			velocity_component.accelerate_in_x_direction(direction.x,delta)
+		if direction.y == 0:
+			velocity_component.decelerate_y(delta)
+		else: 
+			velocity_component.accelerate_in_y_direction(direction.y,delta)
 	velocity_component.apply_gravity(delta)
 	velocity_component.move(entity)

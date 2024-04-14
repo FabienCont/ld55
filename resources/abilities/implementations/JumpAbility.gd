@@ -10,7 +10,7 @@ func get_velocity_component() -> VelocityComponent2D:
 	return entity.velocity_component
 
 func can_be_used()-> bool:
-	return entity.has_die() != true && entity.is_on_floor()
+	return entity.has_die() != true 
 	
 func execute(delta:float)->void:
 	var velocity_component = get_velocity_component()

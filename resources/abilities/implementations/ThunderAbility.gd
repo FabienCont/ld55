@@ -9,6 +9,6 @@ func can_be_used()-> bool:
 func execute(delta:float)->void:
 	var nodes_in_group = entity.get_tree().get_nodes_in_group("waters")
 	for water in nodes_in_group:
-		if water.has_method("push") && water.is_frozen == false:
+		if water.has_method("push"):
 			water.push(delta)
 

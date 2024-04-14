@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://gc5sa07ihaet"]
+
+[ext_resource type="Script" path="res://components/2d/physics/VelocityComponentIced2D.gd" id="1_s7lue"]
+
+[node name="VelocityComponentIced2d" type="Node"]
+script = ExtResource("1_s7lue")

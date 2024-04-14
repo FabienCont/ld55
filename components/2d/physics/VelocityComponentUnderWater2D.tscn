@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://7o5fxvac2hpe"]
+
+[ext_resource type="Script" path="res://components/2d/physics/VelocityComponentUnderWater2D.gd" id="1_8iwvv"]
+
+[node name="VelocityComponentUnderWater2D" type="Node"]
+script = ExtResource("1_8iwvv")
+jump_height = 20.0
+jump_time_to_peak = 1.0
+jump_time_to_descent = 1.0
