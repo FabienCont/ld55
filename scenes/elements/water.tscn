@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://xkrxyn4di7nm"]
+
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_6fnjj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f44wb"]
+shader = ExtResource("1_6fnjj")
+shader_parameter/tint = Color(0.0352941, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab0p6"]
+
+[sub_resource type="GDScript" id="GDScript_awq20"]
+resource_name = "updateCollideShape"
+script/source = "extends CollisionShape2D
+
+@onready var water = $\"../..\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	shape.set_size(water.size)
+	translate(water.size/2)
+	print(water.get_rect())
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Water" type="ColorRect" groups=["waters"]]
+material = SubResource("ShaderMaterial_f44wb")
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ab0p6")
+script = SubResource("GDScript_awq20")

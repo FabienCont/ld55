@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PlayerInfos" load_steps=11 format=3 uid="uid://bt5rwiewc4dni"]
+
+[ext_resource type="Resource" uid="uid://b6v6k4mq3hjo8" path="res://data/characters/olga.tres" id="1_o0d18"]
+[ext_resource type="Script" path="res://resources/entities/PlayerInfos.gd" id="1_o4od5"]
+[ext_resource type="Script" path="res://resources/abilities/implementations/MoveSideScrollAbility.gd" id="1_wjqdu"]
+[ext_resource type="Script" path="res://resources/entity_decision_maker/PlayerLogicComponent.gd" id="2_kdsr4"]
+[ext_resource type="Script" path="res://resources/abilities/implementations/JumpAbility.gd" id="2_rchx5"]
+[ext_resource type="Script" path="res://addons/JamStarterPack/resources/abilities/AbilitiesController.gd" id="2_xitvn"]
+[ext_resource type="Script" path="res://resources/abilities/implementations/WaterAbility.gd" id="3_mi82k"]
+[ext_resource type="Script" path="res://resources/abilities/implementations/SunAbility.gd" id="4_8u65k"]
+
+[sub_resource type="Resource" id="Resource_pm543"]
+script = ExtResource("2_xitvn")
+abilities = {
+"jump": ExtResource("2_rchx5"),
+"move": ExtResource("1_wjqdu"),
+"sun_ability": ExtResource("4_8u65k"),
+"water_ability": ExtResource("3_mi82k")
+}
+
+[sub_resource type="Resource" id="Resource_ff40b"]
+script = ExtResource("2_kdsr4")
+
+[resource]
+script = ExtResource("1_o4od5")
+abilities_controller = SubResource("Resource_pm543")
+logic_component = SubResource("Resource_ff40b")
+character_info = ExtResource("1_o0d18")

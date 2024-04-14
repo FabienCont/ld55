@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterDatas" load_steps=3 format=3 uid="uid://b6v6k4mq3hjo8"]
+
+[ext_resource type="Script" path="res://resources/characters/CharacterDatas.gd" id="1_srg0o"]
+[ext_resource type="PackedScene" uid="uid://g8050808tc4h" path="res://assets/sprites/characters/olga.aseprite" id="2_dxcm5"]
+
+[resource]
+script = ExtResource("1_srg0o")
+name = "olga"
+sprite = ExtResource("2_dxcm5")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://c75ngnjy6400v"]
+
+[sub_resource type="GDScript" id="GDScript_hxynn"]
+resource_name = "UnderwaterInteraction"
+script/source = "extends Area2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_area_entered(area):
+	var parent = get_parent()
+	if parent.has_method(\"enter_water\") : 
+		parent.enter_water()
+	pass # Replace with function body.
+
+
+func _on_area_exited(area):
+	var parent = get_parent()
+	if parent.has_method(\"exit_water\") : 
+		parent.exit_water()
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_weoyp"]
+size = Vector2(32, 56)
+
+[node name="UnderwaterInteraction" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = SubResource("GDScript_hxynn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_weoyp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
