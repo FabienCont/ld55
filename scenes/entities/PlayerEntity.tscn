@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3vvfpfecigaj"]
+[gd_scene load_steps=13 format=3 uid="uid://c3vvfpfecigaj"]
 
 [ext_resource type="Script" path="res://scripts/entities/PlayerEntity.gd" id="1_xurv7"]
 [ext_resource type="Resource" uid="uid://bt5rwiewc4dni" path="res://data/entities/player_infos.tres" id="2_4lv56"]
@@ -10,8 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://7o5fxvac2hpe" path="res://components/2d/physics/VelocityComponentUnderWater2D.tscn" id="6_3oium"]
 [ext_resource type="PackedScene" uid="uid://co4pyj2idq5kg" path="res://components/controllers/SideScrollerControllerComponent2D.tscn" id="7_34cpf"]
 [ext_resource type="PackedScene" uid="uid://c75ngnjy6400v" path="res://components/2d/physics/UnderwaterInteraction.tscn" id="8_n3bk0"]
+[ext_resource type="PackedScene" uid="uid://c6et8g2oeth5" path="res://assets/sprites/characters/wooden_stick.aseprite" id="11_aifhw"]
+[ext_resource type="Script" path="res://scenes/entities/wooden_hand.gd" id="11_qv4xo"]
 
-[node name="PlayerEntity" type="CharacterBody2D" node_paths=PackedStringArray("controller_component", "velocity_component", "health_component", "sprite_component")]
+[node name="PlayerEntity" type="CharacterBody2D" node_paths=PackedStringArray("controller_component", "velocity_component", "health_component")]
+z_index = 1
 collision_layer = 9
 collision_mask = 9
 platform_floor_layers = 4294967291
@@ -20,9 +23,6 @@ controller_component = NodePath("SideScrollerControllerComponent2D")
 player_info = ExtResource("2_4lv56")
 velocity_component = NodePath("VelocityComponent")
 health_component = NodePath("HealthComponent")
-sprite_component = NodePath("SpriteComponent")
-
-[node name="VelocityComponentIced2d" parent="." instance=ExtResource("3_imnur")]
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("2_herhy")]
 
@@ -39,8 +39,25 @@ acceleration = 1000.0
 jump_time_to_peak = 0.35
 jump_time_to_descent = 0.3
 
-[node name="SpriteComponent" parent="." instance=ExtResource("5_nl470")]
+[node name="VelocityComponentIced2d" parent="." instance=ExtResource("3_imnur")]
+FRICTION = 0.4
+jump_height = 50.0
+jump_time_to_peak = 0.4
+jump_time_to_descent = 0.35
 
 [node name="UnderwaterInteraction" parent="." instance=ExtResource("8_n3bk0")]
 
 [node name="SideScrollerControllerComponent2D" parent="." instance=ExtResource("7_34cpf")]
+
+[node name="SpriteComponent" parent="." instance=ExtResource("5_nl470")]
+
+[node name="stick_slot" type="Node2D" parent="." node_paths=PackedStringArray("node_to_follow")]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("11_qv4xo")
+LERP_FACTOR = 10.0
+node_to_follow = NodePath("..")
+offset_follow = Vector2(16, 0)
+
+[node name="wooden_stick" parent="stick_slot" instance=ExtResource("11_aifhw")]
+
+[connection signal="animation_finished" from="stick_slot/wooden_stick" to="stick_slot" method="_on_wooden_stick_animation_finished"]

@@ -1,5 +1,6 @@
 extends Entity
 
+class_name PlayerEntity
 @export var controller_component: ControllerInterface2D
 
 @onready var velocity_component_underwater: VelocityComponent2D = $VelocityComponentUnderWater
@@ -8,10 +9,14 @@ extends Entity
 
 @export var player_info: PlayerInfos
 
+@onready var stick_slot: Node2D = $stick_slot	
+
+@onready var olga = preload("res://assets/sprites/characters/olga.aseprite")
 var is_in_water:bool = false
 var timer_get_out_water:Timer
 var iced =false
 func _ready():
+	sprite_component = get_node("SpriteComponent")
 	init_player(player_info)
 
 func init_player(player_info_init :PlayerInfos) -> void:

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5arqo8ucxpjd"]
+
+[ext_resource type="Texture2D" uid="uid://xxcptjta26tv" path="res://assets/sprites/props/wooden_plank.aseprite" id="1_53tvt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odln7"]
+size = Vector2(30, 10)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 5
+collision_mask = 5
+can_sleep = false
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_odln7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_53tvt")

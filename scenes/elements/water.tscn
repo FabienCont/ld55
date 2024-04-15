@@ -34,6 +34,7 @@ func _process(delta):
 friction = 0.01
 
 [node name="Water" type="ColorRect" groups=["waters"]]
+z_index = -5
 material = SubResource("ShaderMaterial_f44wb")
 offset_right = 10.0
 offset_bottom = 10.0

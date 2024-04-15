@@ -2,13 +2,13 @@
 
 importer="Aseprite AnimatedSprite2D"
 type="PackedScene"
-uid="uid://g8050808tc4h"
-path="res://.godot/imported/olga.aseprite-dbdb8dbcc4260f3f585895d613a2e2d4.scn"
+uid="uid://c6et8g2oeth5"
+path="res://.godot/imported/wooden_stick.aseprite-e79008542ed896883b6ef46159fa52f0.scn"
 
 [deps]
 
-source_file="res://assets/sprites/characters/olga.aseprite"
-dest_files=["res://.godot/imported/olga.aseprite-dbdb8dbcc4260f3f585895d613a2e2d4.scn"]
+source_file="res://assets/sprites/characters/wooden_stick.aseprite"
+dest_files=["res://.godot/imported/wooden_stick.aseprite-e79008542ed896883b6ef46159fa52f0.scn"]
 
 [params]
 
