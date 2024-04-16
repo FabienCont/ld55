@@ -20,8 +20,8 @@ func process_logic(delta:float) -> void:
 	var water_ability =  entity.abilities_controller.get_ability("water_ability")
 	var sun_ability =  entity.abilities_controller.get_ability("sun_ability")
 	var ice_ability =  entity.abilities_controller.get_ability("ice_ability")
-	var wind_ability =  entity.abilities_controller.get_ability("wind_ability")
-	var thunder_ability =  entity.abilities_controller.get_ability("thunder_ability")
+	#var wind_ability =  entity.abilities_controller.get_ability("wind_ability")
+	#var thunder_ability =  entity.abilities_controller.get_ability("thunder_ability")
 	var move_ability =  entity.abilities_controller.get_ability("move")
 	var jump_ability =  entity.abilities_controller.get_ability("jump")
 	
@@ -65,6 +65,9 @@ func process_logic(delta:float) -> void:
 			entity.sprite_component.play("Jump")
 			jump_ability.execute(delta)
 	
+	if entity.stick_slot.can_use_ability() == false:
+		return
+		
 	if entity.controller_component.is_using_control("water_ability") == true && water_ability: 
 		use_ability(water_ability,delta)
 		

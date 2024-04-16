@@ -1,7 +1,8 @@
 extends Node
 
 @onready var intro_level: PackedScene  = preload("res://levels/IntroLevelViewport.tscn")
-@onready var menu: PackedScene  = preload("res://menus/Home.tscn")
+@onready var home: PackedScene  = preload("res://menus/home.tscn")
+@onready var end: PackedScene  = preload("res://menus/end_screen.tscn")
 
 var infos: Dictionary = {
 	"level":0,
@@ -19,9 +20,14 @@ func startLevel():
 
 func endLevel():
 	infos.level+=1
+ 
+func goToEnd():
+	SceneLoader.change_scene_to_packed(end,SceneLoader.TransitionTypeEnum.INSTANT)
+	SoundManager.stopBackgroundGameSound()
+	SoundManager.playBackgroundMenuSound()
 
 func goToMenu():
-	SceneLoader.change_scene_to_packed(menu,SceneLoader.TransitionTypeEnum.INSTANT)
+	SceneLoader.change_scene_to_packed(home,SceneLoader.TransitionTypeEnum.INSTANT)
 	SoundManager.stopBackgroundGameSound()
 	SoundManager.playBackgroundMenuSound()
 

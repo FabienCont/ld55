@@ -19,9 +19,6 @@ func follow_node(delta: float):
 	if node_to_follow != null :
 		global_position = global_position.lerp(node_to_follow.global_position + offset_follow,delta *LERP_FACTOR) 
 
-func use_power(delta: float,name: String):
-	print(name)
-
 func switch_side(direction:Vector2):
 	if direction.x < 0:
 		offset_follow.x= -16
@@ -30,18 +27,22 @@ func switch_side(direction:Vector2):
 		sprite.flip_h = false
 		offset_follow.x= 16
 
-func play(delta):
-	if sprite.animation != "Start_Power":
+func can_use_ability():
+	return sprite.animation =="Idle"
+func play(_delta):
+	if sprite.animation != "Start_Power" && sprite.animation != "Power" && sprite.animation != "EndPower":
 		sprite.play("Start_Power")
 
-func stop(delta):
-	sprite.play("Stop_Power")
+func stop(_delta):
+	sprite.play("End_Power")
 func _on_animation_finished():
 	if sprite.animation == "Start_Power":
 		sprite.play("Power")
-	if sprite.animation == "Stop_Power":
+	elif sprite.animation == "Power":
+		sprite.play("End_Power")
+	elif sprite.animation == "End_Power":
 		sprite.play("Idle")
 
 func _on_wooden_stick_animation_finished():
-	#_on_animation_finished()
+	_on_animation_finished()
 	pass # Replace with function body.

@@ -9,7 +9,9 @@ class_name PlayerEntity
 
 @export var player_info: PlayerInfos
 
-@onready var stick_slot: Node2D = $stick_slot	
+@onready var stick_slot: Node2D = $stick_slot
+
+@onready var power_area_2d : Area2D=$PowerArea2D
 
 @onready var olga = preload("res://assets/sprites/characters/olga.aseprite")
 var is_in_water:bool = false
@@ -25,8 +27,8 @@ func init_player(player_info_init :PlayerInfos) -> void:
 	player_info.stats_controller = stats_controller
 	player_info.upgrades_controller = upgrades_controller
 	player_info.abilities_controller = abilities_controller
-	var collector_distance= stats_controller.get_current_stat(StatsConstEntity.names.collector_distance)
-	var max_life_stat = player_info.stats_controller.get_current_stat(StatsConstEntity.names.max_life)
+	#var collector_distance= stats_controller.get_current_stat(StatsConstEntity.names.collector_distance)
+	#var max_life_stat = player_info.stats_controller.get_current_stat(StatsConstEntity.names.max_life)
 	var movement_speed_stat = stats_controller.get_current_stat(StatsConstEntity.names.movement_speed)
 	var acceleration_stat = stats_controller.get_current_stat(StatsConstEntity.names.acceleration)
 	velocity_component_on_ice.init(movement_speed_stat.value,acceleration_stat.value)

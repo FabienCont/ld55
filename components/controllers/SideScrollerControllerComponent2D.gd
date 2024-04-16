@@ -4,8 +4,9 @@ class_name SideScrollerControllerComponent2D
 
 
 func _ready():
-	if not Engine.is_editor_hint():	
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	pass
+	#if not Engine.is_editor_hint():	
+		#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func has_move() -> bool:
 	return _has_move_this_frame

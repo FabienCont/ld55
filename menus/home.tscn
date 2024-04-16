@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://2m56gqftd485"]
+[gd_scene load_steps=8 format=3 uid="uid://2m56gqftd485"]
 
 [ext_resource type="PackedScene" uid="uid://c0qs36ltswte4" path="res://menus/home/home_layout.tscn" id="1_a55ym"]
-[ext_resource type="PackedScene" uid="uid://ddr8rsnjp5sls" path="res://menus/home/home_content.tscn" id="2_isc7u"]
+[ext_resource type="Script" path="res://menus/home.gd" id="1_qbluu"]
+[ext_resource type="Texture2D" uid="uid://61wy3r8woclp" path="res://assets/ui/button_play.aseprite" id="3_b5x5f"]
+[ext_resource type="Texture2D" uid="uid://f3b0i3lqkybv" path="res://assets/background/SplashScreen.aseprite" id="3_jheo4"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/ButtonStart.gd" id="4_ee4xd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjrdg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbi4k"]
 
 [node name="acceuil2" type="Control"]
 layout_mode = 3
@@ -10,9 +17,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qbluu")
 metadata/_edit_vertical_guides_ = []
 
 [node name="Control" parent="." instance=ExtResource("1_a55ym")]
 layout_mode = 1
 
-[node name="Node" parent="Control" instance=ExtResource("2_isc7u")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+use_hdr_2d = true
+size = Vector2i(1152, 648)
+size_2d_override = Vector2i(480, 240)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport"]
+texture_filter = 1
+texture = ExtResource("3_jheo4")
+centered = false
+
+[node name="ButtonStart" type="Button" parent="Control/SubViewportContainer/SubViewport"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -20.0
+offset_right = 36.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gjrdg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gbi4k")
+icon = ExtResource("3_b5x5f")
+flat = true
+script = ExtResource("4_ee4xd")
+
+[connection signal="pressed" from="Control/SubViewportContainer/SubViewport/ButtonStart" to="Control/SubViewportContainer/SubViewport/ButtonStart" method="_on_pressed"]

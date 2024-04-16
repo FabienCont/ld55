@@ -7,8 +7,11 @@ func can_be_used()-> bool:
 	return entity.has_die() != true
 	
 func execute(delta:float)->void:
-	var nodes_in_group = entity.get_tree().get_nodes_in_group("waters")
-	for water in nodes_in_group:
+	var overlapping_areas = entity.power_area_2d.get_overlapping_areas()
+	
+	# Loop through the overlapping areas
+	for area in overlapping_areas:
+		var water = area.water
 		if water.has_method("froze") && water.is_frozen==false:
 			water.froze(delta)
 

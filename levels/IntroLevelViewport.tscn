@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dehqjjw5bbrkx"]
+[gd_scene load_steps=3 format=3 uid="uid://dehqjjw5bbrkx"]
 
 [ext_resource type="Script" path="res://scripts/levels/MainLevelScript.gd" id="1_ibtdq"]
 [ext_resource type="PackedScene" uid="uid://btg03jte3v57y" path="res://levels/IntroLevel.tscn" id="2_bcjdm"]
-[ext_resource type="PackedScene" uid="uid://b32l7opmpaidv" path="res://menus/pause.tscn" id="11_bp3mo"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("game_world")]
 layout_mode = 3
@@ -61,7 +60,3 @@ offset_top = 4.0
 offset_right = 125.0
 offset_bottom = 42.0
 grow_horizontal = 2
-
-[node name="pause" parent="." instance=ExtResource("11_bp3mo")]
-visible = false
-layout_mode = 1
