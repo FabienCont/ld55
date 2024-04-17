@@ -1,4 +1,3 @@
-@tool
 extends ColorRect
 
 @export var max_pull_value :float= 20.0
@@ -15,9 +14,9 @@ extends ColorRect
 @onready var area = $Area2D
 @onready var ice_static_body = $StaticBody2D
 @onready var pos_y_temp: = position.y
-var water_tint:Vector4 = Vector4(0.18,.28,0.63,0.1)
-var frozen_tint:Vector4 =  Vector4(0.03,1.,1.,0.80)
-var actual_tint:Vector4 =  Vector4(0.18,.28,0.63,0.1):
+@onready var water_tint:Vector4 = Vector4(0.18,.28,0.63,0.1)
+@onready var frozen_tint:Vector4 =  Vector4(0.03,1.,1.,0.80)
+@onready var actual_tint:Vector4 =  Vector4(0.18,.28,0.63,0.1):
 	set(value):
 		actual_tint = value
 		set_color_shader(value)
@@ -35,7 +34,7 @@ func _process(delta):
 	if position.y != pos_y_temp:
 		position.y = lerp(position.y,pos_y_temp,delta)
 
-func _onready():
+func _ready():
 	if is_frozen == true:
 		start_froze()
 	else:
@@ -51,7 +50,7 @@ func add_pull_value(value:float):
 	pull_value_applied = new_pull_value_applied
 
 func update_pos(translate_value):
-	pos_y_temp = position.y + translate_value
+	pos_y_temp = pos_y_temp + translate_value
 	#position.y += translate_value
 
 func pull(_delta):
@@ -101,3 +100,4 @@ func createTweenEffect(is_froze:bool):
 	
 	tween.tween_property(self,"percent_frozen",final_value,0.4).from_current()
 	tween.play()
+	print("play")

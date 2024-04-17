@@ -5,29 +5,24 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_soundQueuesByName["BackgroundSoundQueue"] = get_node("BackgroundSoundQueue")
-	_soundQueuesByName["BackgroundGameSoundQueue"] = get_node("BackgroundGameSoundQueue")
-	
-	_soundPoolsByName["FootstepSoundPool"] = get_node("FootstepSoundPool")
 	playBackgroundMenuSound()
 
 func playBackgroundMenuSound():
-	get_sound_queue_by_name("BackgroundSoundQueue").play_sound_with_fade_in(2)
-
+	#get_sound_queue_by_name("BackgroundSoundQueue").play_sound_with_fade_in(2)
+	pass
 func stopBackgroundMenuSound():
-	get_sound_queue_by_name("BackgroundSoundQueue").stop_sound_with_fade_out(4)
-	
+	#get_sound_queue_by_name("BackgroundSoundQueue").stop_sound_with_fade_out(4)
+	pass
 func playBackgroundGameSound():
-	get_sound_queue_by_name("BackgroundGameSoundQueue").play_sound_with_fade_in(2)
-	
+	#get_sound_queue_by_name("BackgroundGameSoundQueue").play_sound_with_fade_in(2)
+	pass
 func stopBackgroundGameSound():
-	get_sound_queue_by_name("BackgroundGameSoundQueue").stop_sound_with_fade_out(4)
-
+	#get_sound_queue_by_name("BackgroundGameSoundQueue").stop_sound_with_fade_out(4)
+	pass
 func playFootstepSound():
-	get_sound_pool_by_name("FootstepSoundPool").play_random_sound()
-
+	#get_sound_pool_by_name("FootstepSoundPool").play_random_sound()
+	pass
 func get_sound_queue_by_name(sound_name: String) -> SoundQueue :
 	return _soundQueuesByName[sound_name]
-
 func get_sound_pool_by_name(sound_name: String) -> SoundPool :
 	return _soundPoolsByName[sound_name]

@@ -1,16 +1,16 @@
 extends Area2D
 
-var gravity_water_space = SPACE_OVERRIDE_COMBINE_REPLACE
-var gravity_water_direction = Vector2(0,-1)
-var gravity_water:float = 955
-var water_linear_space: = SPACE_OVERRIDE_REPLACE
-var water_linear_damp = 10
+@onready var gravity_water_space = SPACE_OVERRIDE_COMBINE_REPLACE
+@onready var gravity_water_direction = Vector2(0,-1)
+@onready var gravity_water:float = 955
+@onready var water_linear_space: = SPACE_OVERRIDE_REPLACE
+@onready var water_linear_damp = 10
 
-var gravity_ice_space = SPACE_OVERRIDE_REPLACE
-var gravity_ice_direction = Vector2(0,0)
-var gravity_ice:float = 0
-var ice_linear_space: = SPACE_OVERRIDE_REPLACE
-var ice_linear_damp = 900
+@onready var gravity_ice_space = SPACE_OVERRIDE_REPLACE
+@onready var gravity_ice_direction = Vector2(0,0)
+@onready var gravity_ice:float = 0
+@onready var ice_linear_space: = SPACE_OVERRIDE_REPLACE
+@onready var ice_linear_damp = 900
 
 @onready var water = get_parent()
 

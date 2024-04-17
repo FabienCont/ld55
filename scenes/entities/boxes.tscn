@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://i1u4bk7le3xw"]
+
+[ext_resource type="Texture2D" uid="uid://622dmdid5sew" path="res://assets/sprites/props/box_close.aseprite" id="1_54mmb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqy5r"]
+size = Vector2(26, 25)
+
+[node name="BoxesStaticBody" type="StaticBody2D"]
+position = Vector2(-453, 165)
+
+[node name="BoxClose" type="Sprite2D" parent="."]
+z_index = -14
+texture = ExtResource("1_54mmb")
+
+[node name="BoxClose2" type="Sprite2D" parent="."]
+z_index = -14
+position = Vector2(1, -13)
+texture = ExtResource("1_54mmb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_mqy5r")

@@ -19,9 +19,11 @@ var timer_get_out_water:Timer
 var iced =false
 func _ready():
 	sprite_component = get_node("SpriteComponent")
+	player_info.force_init()
 	init_player(player_info)
 
 func init_player(player_info_init :PlayerInfos) -> void:
+	print(player_info_init.stats_controller)
 	init_entity(player_info_init.stats_controller,player_info_init.upgrades_controller,player_info_init.abilities_controller,player_info_init.logic_component)
 	player_info = player_info_init
 	player_info.stats_controller = stats_controller

@@ -1,44 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://gc8fm16yg4rp"]
+[gd_scene load_steps=2 format=3 uid="uid://gc8fm16yg4rp"]
 
-[ext_resource type="Script" path="res://addons/JamStarterPack/scripts/sounds/SoundPool.gd" id="1_63dqo"]
-[ext_resource type="Script" path="res://addons/JamStarterPack/scripts/sounds/SoundQueue.gd" id="1_j1odo"]
 [ext_resource type="Script" path="res://scripts/autoload/SoundManager.gd" id="1_w2x7l"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_w2x7l")
-
-[node name="BackgroundSoundQueue" type="Node" parent="."]
-script = ExtResource("1_j1odo")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BackgroundSoundQueue"]
-
-[node name="BackgroundGameSoundQueue" type="Node" parent="."]
-script = ExtResource("1_j1odo")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BackgroundGameSoundQueue"]
-
-[node name="FootstepSoundPool" type="Node" parent="."]
-script = ExtResource("1_63dqo")
-one_sound = true
-
-[node name="SoundQueue" type="Node" parent="FootstepSoundPool"]
-script = ExtResource("1_j1odo")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue"]
-pitch_scale = 1.24
-
-[node name="SoundQueue2" type="Node" parent="FootstepSoundPool"]
-script = ExtResource("1_j1odo")
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue2"]
-pitch_scale = 1.5
-
-[node name="SoundQueue3" type="Node" parent="FootstepSoundPool"]
-script = ExtResource("1_j1odo")
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue3"]
-
-[node name="SoundQueue4" type="Node" parent="FootstepSoundPool"]
-script = ExtResource("1_j1odo")
-
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="FootstepSoundPool/SoundQueue4"]
